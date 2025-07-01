@@ -1,4 +1,4 @@
-# 🌱 Spring Boot 3, Spring 6 & Hibernate for Beginners
+# 🌱 Spring Boot 3, Spring 6 & Hibernate
 
 ### 1. 🔧 Spring Boot Essentials
 - Project structure
