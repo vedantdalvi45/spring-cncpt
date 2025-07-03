@@ -1,4 +1,4 @@
-package com.example.demo.common;
+package com.example.demo.controller;
 
 public interface Coach {
     String getDailyWorkout();
