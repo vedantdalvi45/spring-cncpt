@@ -2,6 +2,6 @@
 DROP USER if exists 'springstudent'@'%' ;
 
 -- Now create user with prop privileges
-CREATE USER 'springstudent'@'%' IDENTIFIED BY 'springstudent';
+CREATE USER 'springstudent'@'%' IDENTIFIED BY 'password';
 
 GRANT ALL PRIVILEGES ON * . * TO 'springstudent'@'%';
