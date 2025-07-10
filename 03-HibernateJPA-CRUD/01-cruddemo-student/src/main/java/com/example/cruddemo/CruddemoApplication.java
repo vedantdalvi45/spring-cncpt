@@ -33,7 +33,16 @@ public class CruddemoApplication {
             for(Student s:findAllStudents(studentDAO)){
                 System.out.println(s.toString());
             }
+
+            System.out.println("findAllByLastName()");
+            for (Student s : findAllByLastName(studentDAO,"Sharma")){
+                System.out.println(s.toString());
+            }
         };
+    }
+
+    private List<Student> findAllByLastName(StudentDAO studentDAO,String lastName){
+        return studentDAO.findByLastName(lastName);
     }
 
     private List<Student> findAllStudents(StudentDAO studentDAO) {
