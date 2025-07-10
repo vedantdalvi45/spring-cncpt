@@ -20,8 +20,9 @@ public class StudentDAOImpl implements StudentDAO{
         this.entityManager = entityManager;
     }
 
-    @Transactional
+
     @Override
+    @Transactional
     public void save(Student student) {
         entityManager.persist(student);
     }
@@ -48,4 +49,11 @@ public class StudentDAOImpl implements StudentDAO{
 
         return typedQuery.getResultList();
     }
+
+    @Override
+    @Transactional
+    public void update(Student student) {
+        entityManager.merge(student);
+    }
+
 }

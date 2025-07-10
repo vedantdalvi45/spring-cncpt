@@ -38,7 +38,22 @@ public class CruddemoApplication {
             for (Student s : findAllByLastName(studentDAO,"Sharma")){
                 System.out.println(s.toString());
             }
+
+            System.out.println("updateStudent()");
+            updateStudent(studentDAO,3);
+
         };
+    }
+
+    private void updateStudent(StudentDAO studentDAO,int id){
+        try {
+            Student student = findStudentById(studentDAO,id);
+            student.setFirstName("Ram");
+            studentDAO.update(student);
+            System.out.println("Updated :"+student.toString());
+        }catch (NullPointerException e){
+            System.out.println(e.getLocalizedMessage());
+        }
     }
 
     private List<Student> findAllByLastName(StudentDAO studentDAO,String lastName){
