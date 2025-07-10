@@ -45,7 +45,13 @@ public class CruddemoApplication {
 
             System.out.println("removeStudentById()");
             removeStudentById(studentDAO,30000);
+
+            System.out.println("deleteAllStudents() : "+deleteAllStudents(studentDAO));
         };
+    }
+
+    private int deleteAllStudents(StudentDAO studentDAO){
+        return studentDAO.deleteAll();
     }
 
     private void removeStudentById(StudentDAO studentDAO,int id){
@@ -96,7 +102,11 @@ public class CruddemoApplication {
         } catch (DataIntegrityViolationException e) {
             System.out.println("Exeption +" + e.getMessage());
         }
+
+
     }
+
+
 
     private void createStudent(StudentDAO studentDAO) {
 
@@ -111,7 +121,6 @@ public class CruddemoApplication {
         } catch (DataIntegrityViolationException e) {
             System.out.println("Exeption +" + e.getMessage());
         }
-
 
         //display the id of saved student
         System.out.println("Student Id " + student1.getId());
