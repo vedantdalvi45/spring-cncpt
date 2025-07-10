@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 
 import java.util.List;
 
@@ -42,7 +43,18 @@ public class CruddemoApplication {
             System.out.println("updateStudent()");
             updateStudent(studentDAO,3);
 
+            System.out.println("removeStudentById()");
+            removeStudentById(studentDAO,30000);
         };
+    }
+
+    private void removeStudentById(StudentDAO studentDAO,int id){
+        try {
+            studentDAO.delete(id);
+            System.out.println("Student Removed");
+        } catch (InvalidDataAccessApiUsageException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
     }
 
     private void updateStudent(StudentDAO studentDAO,int id){
@@ -50,7 +62,7 @@ public class CruddemoApplication {
             Student student = findStudentById(studentDAO,id);
             student.setFirstName("Ram");
             studentDAO.update(student);
-            System.out.println("Updated :"+student.toString());
+            System.out.println("Updated : "+student.toString());
         }catch (NullPointerException e){
             System.out.println(e.getLocalizedMessage());
         }
