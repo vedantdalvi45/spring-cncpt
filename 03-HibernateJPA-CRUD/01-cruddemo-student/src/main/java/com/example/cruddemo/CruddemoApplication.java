@@ -22,31 +22,31 @@ public class CruddemoApplication {
         return runner -> {
 //            createStudent(studentDAO);
 
-//            createMultipleStudents(studentDAO);
+            createMultipleStudents(studentDAO);
 
-            try {
-                System.out.println(findStudentById(studentDAO,3).toString());
-            }catch (NullPointerException e){
-                System.out.println(e.getLocalizedMessage());
-            }
-
-            System.out.println("findAll()");
-            for(Student s:findAllStudents(studentDAO)){
-                System.out.println(s.toString());
-            }
-
-            System.out.println("findAllByLastName()");
-            for (Student s : findAllByLastName(studentDAO,"Sharma")){
-                System.out.println(s.toString());
-            }
-
-            System.out.println("updateStudent()");
-            updateStudent(studentDAO,3);
-
-            System.out.println("removeStudentById()");
-            removeStudentById(studentDAO,30000);
-
-            System.out.println("deleteAllStudents() : "+deleteAllStudents(studentDAO));
+//            try {
+//                System.out.println(findStudentById(studentDAO,3).toString());
+//            }catch (NullPointerException e){
+//                System.out.println(e.getLocalizedMessage());
+//            }
+//
+//            System.out.println("findAll()");
+//            for(Student s:findAllStudents(studentDAO)){
+//                System.out.println(s.toString());
+//            }
+//
+//            System.out.println("findAllByLastName()");
+//            for (Student s : findAllByLastName(studentDAO,"Sharma")){
+//                System.out.println(s.toString());
+//            }
+//
+//            System.out.println("updateStudent()");
+//            updateStudent(studentDAO,3);
+//
+//            System.out.println("removeStudentById()");
+//            removeStudentById(studentDAO,30000);
+//
+//            System.out.println("deleteAllStudents() : "+deleteAllStudents(studentDAO));
         };
     }
 
@@ -95,7 +95,7 @@ public class CruddemoApplication {
         //save students
         System.out.println("Saving The Student");
         try {
-//            studentDAO.save(student1);
+            studentDAO.save(student1);
             studentDAO.save(student2);
             studentDAO.save(student3);
             studentDAO.save(student4);
