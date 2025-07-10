@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.dao.DataIntegrityViolationException;
 
+import java.util.List;
+
 @SpringBootApplication
 public class CruddemoApplication {
     public static void main(String[] args) {
@@ -22,12 +24,20 @@ public class CruddemoApplication {
 //            createMultipleStudents(studentDAO);
 
             try {
-                System.out.println(findStudentById(studentDAO,5).toString());
+                System.out.println(findStudentById(studentDAO,3).toString());
             }catch (NullPointerException e){
                 System.out.println(e.getLocalizedMessage());
             }
-        };
 
+            System.out.println("findAll()");
+            for(Student s:findAllStudents(studentDAO)){
+                System.out.println(s.toString());
+            }
+        };
+    }
+
+    private List<Student> findAllStudents(StudentDAO studentDAO) {
+        return studentDAO.findAll();
     }
 
     private Student findStudentById(StudentDAO studentDAO,int id){
