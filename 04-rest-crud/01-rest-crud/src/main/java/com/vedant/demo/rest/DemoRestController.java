@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Executable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +22,9 @@ public class DemoRestController {
 
     @GetMapping("/students")
     public List<Student> getStudents(){
-        studentList.add(new Student(studentList.size()+1,"Ajay","Kumar"));
-        studentList.add(new Student(studentList.size()+1,"Raj","Kumar"));
-        studentList.add(new Student(studentList.size()+1,"Vijay","Kumar"));
+        studentList.add(new Student(studentList.size(),"Ajay","Kumar"));
+        studentList.add(new Student(studentList.size(),"Raj","Kumar"));
+        studentList.add(new Student(studentList.size(),"Vijay","Kumar"));
         return studentList;
     }
 
@@ -35,13 +36,23 @@ public class DemoRestController {
     }
 
     @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exeption){
+    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exception){
         StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
         studentErrorResponse.setStatus(HttpStatus.NOT_FOUND.value());
-        studentErrorResponse.setMessage(exeption.getMessage());
+        studentErrorResponse.setMessage(exception.getMessage());
         studentErrorResponse.setTimeStamp(System.currentTimeMillis());
 
         return new ResponseEntity<>(studentErrorResponse,HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<StudentErrorResponse> handleException(Exception e){
+        StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
+        studentErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
+        studentErrorResponse.setMessage(e.getMessage());
+        studentErrorResponse.setTimeStamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(studentErrorResponse,HttpStatus.BAD_REQUEST);
     }
 
 }
