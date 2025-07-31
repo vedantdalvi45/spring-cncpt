@@ -30,12 +30,12 @@ public class DemoRestController {
     @GetMapping("/student/{id}")
     public Student getStudent(@PathVariable("id") int id){
         if (id >= 0 || id > studentList.size())
-            throw new StudentNotFoundExeption("Student not found of id "+id);
+            throw new StudentNotFoundException("Student not found of id "+id);
         return studentList.get(id-1);
     }
 
     @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundExeption exeption){
+    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exeption){
         StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
         studentErrorResponse.setStatus(HttpStatus.NOT_FOUND.value());
         studentErrorResponse.setMessage(exeption.getMessage());
