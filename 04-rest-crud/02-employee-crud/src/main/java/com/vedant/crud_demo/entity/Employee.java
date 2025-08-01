@@ -37,4 +37,12 @@ public class Employee {
         this.lastName = lastName;
         this.email = email;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

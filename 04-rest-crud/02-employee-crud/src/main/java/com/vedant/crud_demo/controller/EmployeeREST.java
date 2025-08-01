@@ -1,11 +1,8 @@
 package com.vedant.crud_demo.controller;
 
-import com.vedant.crud_demo.dao.EmployeeDAO;
 import com.vedant.crud_demo.entity.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.vedant.crud_demo.service.EmployeeService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,15 +10,42 @@ import java.util.List;
 @RequestMapping("/api")
 public class EmployeeREST {
 
-    EmployeeDAO employeeDAO;
+    EmployeeService employeeService;
 
-    public EmployeeREST(EmployeeDAO employeeDAO){
-        this.employeeDAO = employeeDAO;
+    public EmployeeREST(EmployeeService employeeService){
+        this.employeeService = employeeService;
     }
 
     @GetMapping("/employees")
     public List<Employee> getEmployees(){
-        return employeeDAO.findAll();
+        return employeeService.findAll();
+    }
+
+    @PostMapping("/employees")
+    public Employee addEmployee(@RequestBody Employee employee){
+        employee.setId(0);
+        Employee employee1 = employeeService.save(employee);
+        return employee1;
+    }
+
+    @GetMapping("/employees/{id}")
+    public Employee getEmployee(@PathVariable int id){
+        return employeeService.findById(id);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public  void deleteEmployee(@PathVariable int id){
+        employeeService.deleteById(id);
+    }
+
+    @PostMapping("/employees/all")
+    public List<Employee> addAllEmployees(@RequestBody List<Employee> employees){
+        return employeeService.addAll(employees);
+    }
+
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee){
+        return employeeService.update(employee);
     }
 
 }
