@@ -29,9 +29,9 @@ public class CrudDemoApplication {
 			role1.setRole("ROLE_EMPLOYEE");
 			role1.setMember(user);
 
-//			Role role2 = new Role();
-//			role2.setRole("ROLE_MANAGER");
-//			role2.setMember(user);
+			Role role2 = new Role();
+			role2.setRole("ROLE_MANAGER");
+			role2.setMember(user);
 
 //			Role role3 = new Role();
 //			role3.setRole("ROLE_ADMIN");
@@ -39,7 +39,7 @@ public class CrudDemoApplication {
 
 			Set<Role> roles = new HashSet<>();
 			roles.add(role1);
-//			roles.add(role2);
+			roles.add(role2);
 //			roles.add(role3);
 
 			user.setRoles(roles);
