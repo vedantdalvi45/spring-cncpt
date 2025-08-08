@@ -20,10 +20,18 @@ public class CrudDemoApplication {
 	@Bean
 	public CommandLineRunner userCreation(MemberService memberService) {
 		return args -> {
-			Member user = new Member();
-			user.setUserId("adi");
-			user.setPassword("{noop}test123");
-			user.setActive(1);
+//			Member user = new Member();
+//			user.setUserId("adi");
+//			user.setPassword("{noop}test123");
+//			user.setActive(1);
+
+			Member user = Member.builder()
+					.userId("raj")
+					.password("{noop}test123")
+					.active(1)
+					.build();
+
+
 
 			Role role1 = new Role();
 			role1.setRole("ROLE_EMPLOYEE");
@@ -47,7 +55,7 @@ public class CrudDemoApplication {
 			Member savedUser = memberService.createMember(user);
 
 			System.out.println("✅ User created and saved:");
-			System.out.println(savedUser);
+			System.out.println(savedUser.toString());
 		};
 	}
 
