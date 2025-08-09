@@ -6,4 +6,6 @@ import com.ved.cruddemo.entity.Instructor;
 public interface AppDao {
 
     void save(Instructor instructor);
+
+    Instructor findInstructorById(int id);
 }
