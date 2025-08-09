@@ -19,18 +19,21 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDao appDao){
 		return runner ->{
-			createInstructor(appDao);
+//			createInstructor(appDao);
 //
 //			findInstructor(appDao);
 //			deleteInstructor(appDao);
 
 			findInstructorDetailsById(appDao);
+//			deleteInstructorDetail(appDao);
 
 		};
 
 	}
 
-	void createInstructor(AppDao appDao){
+
+
+	private void createInstructor(AppDao appDao){
 		Instructor instructor = new Instructor("Raj","Kumar","raj@gmail.com");
 		InstructorDetail instructorDetail = new InstructorDetail("raj YT","xx");
 		instructor.setInstructorDetail(instructorDetail);
@@ -44,19 +47,23 @@ public class CruddemoApplication {
 
 	}
 
-	void findInstructor(AppDao appDao){
+	private void findInstructor(AppDao appDao){
 		System.out.println(appDao.findInstructorById(2));
 	}
 
-	void deleteInstructor(AppDao appDao){
+	private void deleteInstructor(AppDao appDao){
 
 		System.out.println("Instructor Deleted Status : "+ appDao.deleteById(1));
 	}
 
-	void findInstructorDetailsById(AppDao appDao){
-		InstructorDetail instructorDetail =  appDao.findInstructorDetailById(6);
+	private void findInstructorDetailsById(AppDao appDao){
+		InstructorDetail instructorDetail =  appDao.findInstructorDetailById(16);
 		System.out.println(instructorDetail);
 		System.out.println(instructorDetail.getInstructor());
+	}
+
+	private void deleteInstructorDetail(AppDao appDao) {
+		System.out.println("InstructorDetail Deletion Status :" + appDao.deleteInstructorDetailById(16));
 	}
 
 
