@@ -39,4 +39,6 @@ public class Instructor {
     @JoinColumn(name = "instructor_detail_id")
 //    @ToString.Exclude
     private InstructorDetail instructorDetail;
+
+
 }

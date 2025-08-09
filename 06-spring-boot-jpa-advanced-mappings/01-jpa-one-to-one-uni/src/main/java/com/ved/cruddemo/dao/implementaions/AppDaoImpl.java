@@ -2,6 +2,7 @@ package com.ved.cruddemo.dao.implementaions;
 
 import com.ved.cruddemo.dao.AppDao;
 import com.ved.cruddemo.entity.Instructor;
+import com.ved.cruddemo.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,4 +28,18 @@ public class AppDaoImpl implements AppDao {
     public Instructor findInstructorById(int id) {
         return entityManager.find(Instructor.class,id);
     }
+
+    @Override
+    @Transactional
+    public boolean deleteById(int id) {
+        Instructor instructor = findInstructorById(id);
+        if (instructor != null){
+            entityManager.remove(instructor);
+            return true;
+        }else {
+            return false;
+        }
+
+    }
+
 }
