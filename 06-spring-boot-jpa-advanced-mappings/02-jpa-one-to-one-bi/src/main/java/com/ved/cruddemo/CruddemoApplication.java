@@ -32,7 +32,6 @@ public class CruddemoApplication {
 	}
 
 
-
 	private void createInstructor(AppDao appDao){
 		Instructor instructor = new Instructor("Raj","Kumar","raj@gmail.com");
 		InstructorDetail instructorDetail = new InstructorDetail("raj YT","xx");
@@ -63,7 +62,7 @@ public class CruddemoApplication {
 	}
 
 	private void deleteInstructorDetail(AppDao appDao) {
-		System.out.println("InstructorDetail Deletion Status :" + appDao.deleteInstructorDetailById(1));
+		System.out.println("InstructorDetail Deletion Status :" + appDao.deleteInstructorDetailById(2));
 	}
 
 

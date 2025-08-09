@@ -24,7 +24,7 @@ public class InstructorDetail {
     private String hobby;
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "instructorDetail",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "instructorDetail", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private Instructor instructor;
 
 

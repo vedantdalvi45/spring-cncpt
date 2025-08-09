@@ -53,6 +53,7 @@ public class AppDaoImpl implements AppDao {
         InstructorDetail instructorDetail = findInstructorDetailById(id);
         if (instructorDetail != null){
             entityManager.remove(instructorDetail);
+            instructorDetail.getInstructor().setInstructorDetail(null);
             return true;
         }else {
             return false;

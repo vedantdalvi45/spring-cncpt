@@ -27,6 +27,9 @@ CREATE TABLE `instructor` (
   CONSTRAINT `FK_DETAIL` FOREIGN KEY (`instructor_detail_id`) REFERENCES `instructor_detail` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-SELECT * FROM instructor;
+SELECT * FROM instructor; 
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+DROP TABLE instructor;
+DROP TABLE instructor_detail;

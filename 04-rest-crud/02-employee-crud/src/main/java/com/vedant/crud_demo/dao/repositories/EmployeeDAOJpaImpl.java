@@ -30,7 +30,7 @@ public class EmployeeDAOJpaImpl implements EmployeeDAO {
         return entityManager.find(Employee.class,id);
     }
 
-
+    @Transactional
     @Override
     public Employee save(Employee employee) {
         return entityManager.merge(employee);
