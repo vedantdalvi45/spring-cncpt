@@ -24,8 +24,8 @@ public class CruddemoApplication {
 //			findInstructor(appDao);
 //			deleteInstructor(appDao);
 
-			findInstructorDetailsById(appDao);
-//			deleteInstructorDetail(appDao);
+//			findInstructorDetailsById(appDao);
+			deleteInstructorDetail(appDao);
 
 		};
 
@@ -63,7 +63,7 @@ public class CruddemoApplication {
 	}
 
 	private void deleteInstructorDetail(AppDao appDao) {
-		System.out.println("InstructorDetail Deletion Status :" + appDao.deleteInstructorDetailById(16));
+		System.out.println("InstructorDetail Deletion Status :" + appDao.deleteInstructorDetailById(1));
 	}
 
 
