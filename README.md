@@ -42,12 +42,8 @@
 - Form login/logout
 - CSRF protection
 
-### 8. 🖥️ Thymeleaf Templates
-- Dynamic HTML pages
-- Template fragments
-- MVC form integration
 
-### 9. 🧭 AOP (Aspect-Oriented Programming)
+### 8. 🧭 AOP (Aspect-Oriented Programming)
 - Cross-cutting concerns
 - Creating custom aspects
 - Pointcuts and advices
@@ -57,3 +53,4 @@
 - Health checks, metrics
 - Maven builds
 - Deployment tips
+
