@@ -33,3 +33,4 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 DROP TABLE instructor;
 DROP TABLE instructor_detail;
+DROP TABLE course;

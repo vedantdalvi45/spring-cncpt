@@ -22,20 +22,38 @@ public class CruddemoApplication {
 		return runner ->{
 //			createInstructor(appDao);
 //			createInstructorWithCourse(appDao);
-			System.out.println(appDao.findAllInstructors());
+//			System.out.println(appDao.findAllInstructors());
 
 //			findInstructor(appDao);
 //			deleteInstructor(appDao);
 
-			findInstructorDetailsById(appDao);
+//			findInstructorDetailsById(appDao);
 //			deleteInstructorDetail(appDao);
 
+			
+//			findInstructorWithCourses(appDao);
+//			findCourseWithInstructorId(appDao);
+			findInstructorWithCourseJoinFetch(appDao);
 		};
 
 	}
 
+	private void findInstructorWithCourseJoinFetch(AppDao appDao) {
+		System.out.println(appDao.findInstructorByCourseJoinFetch(1).getCourses());
+	}
+
+	private void findCourseWithInstructorId(AppDao appDao) {
+		System.out.println(appDao.findCourseByInstructorId(1));
+	}
+
+	private void findInstructorWithCourses(AppDao appDao) {
+		Instructor instructor = appDao.findInstructorById(1);
+		System.out.println(instructor);
+		System.out.println(instructor.getCourses());
+	}
+
 	private void createInstructorWithCourse(AppDao appDao) {
-		Instructor instructor = new Instructor("Raj","Kumar","raj2@gmail.com");
+		Instructor instructor = new Instructor("Raj","Kumar","raj1@gmail.com");
 		InstructorDetail instructorDetail = new InstructorDetail("raj YT","xx");
 		instructor.setInstructorDetail(instructorDetail);
 		instructor.addCourse(new Course("Hindi"));
@@ -74,7 +92,7 @@ public class CruddemoApplication {
 	}
 
 	private void findInstructorDetailsById(AppDao appDao){
-		InstructorDetail instructorDetail =  appDao.findInstructorDetailById(16);
+		InstructorDetail instructorDetail =  appDao.findInstructorDetailById(1);
 		System.out.println(instructorDetail);
 		System.out.println(instructorDetail.getInstructor());
 	}

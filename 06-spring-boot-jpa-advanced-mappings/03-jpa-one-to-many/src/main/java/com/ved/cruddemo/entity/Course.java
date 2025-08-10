@@ -18,6 +18,7 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "title",unique = true)
     private String title;
 
     @ToString.Exclude

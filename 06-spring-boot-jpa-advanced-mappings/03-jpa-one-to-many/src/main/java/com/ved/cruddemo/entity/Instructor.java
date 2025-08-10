@@ -37,9 +37,10 @@ public class Instructor {
     private InstructorDetail instructorDetail;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "instructor",cascade = {
-            CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH
-    })
+    @OneToMany(mappedBy = "instructor",fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH
+            })
     private List<Course> courses;
 
     public Instructor(String fName, String lName, String email) {
@@ -48,17 +49,18 @@ public class Instructor {
         this.email = email;
     }
 
-    public Course addCourse(Course course){
+    public Course addCourse(Course course) {
         course.setInstructor(this);
-        if (courses == null){
+        if (courses == null) {
             courses = new ArrayList<>();
             courses.add(course);
-        }else {
+        } else {
             courses.add(course);
         }
         return course;
     }
-    public List<Course> addCourses(List<Course> newCourses){
+
+    public List<Course> addCourses(List<Course> newCourses) {
         if (courses == null)
             courses = new ArrayList<>(courses);
 
@@ -66,8 +68,6 @@ public class Instructor {
         newCourses.forEach(course -> course.setInstructor(this));
         return newCourses;
     }
-
-
 
 
 }
