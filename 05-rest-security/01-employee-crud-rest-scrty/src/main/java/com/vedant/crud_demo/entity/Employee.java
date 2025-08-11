@@ -1,12 +1,9 @@
 package com.vedant.crud_demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonTypeId;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.ConditionalOnIssuerLocationJwtDecoder;
 
 
 @Entity
@@ -38,11 +35,4 @@ public class Employee {
         this.email = email;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

@@ -12,7 +12,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 
 @SpringBootApplication
 public class CruddemoApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(CruddemoApplication.class, args);
 	}
@@ -30,7 +29,6 @@ public class CruddemoApplication {
 //			findInstructorDetailsById(appDao);
 //			deleteInstructorDetail(appDao);
 
-			
 //			findInstructorWithCourses(appDao);
 //			findCourseWithInstructorId(appDao);
 			findInstructorWithCourseJoinFetch(appDao);
