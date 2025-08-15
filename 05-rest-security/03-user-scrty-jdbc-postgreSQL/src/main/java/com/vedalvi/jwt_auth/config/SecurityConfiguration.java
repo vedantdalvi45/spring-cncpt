@@ -41,24 +41,24 @@ public class SecurityConfiguration {
                 .build();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService(){
-        UserDetails user1 = User
-                .withDefaultPasswordEncoder()
-                .username("raj")
-                .password("test123")
-                .roles("ADMIN")
-                .build();
-
-        UserDetails user2 = User
-                .withDefaultPasswordEncoder()
-                .username("kumar")
-                .password("test123")
-                .roles("USER")
-                .build();
-
-        return new InMemoryUserDetailsManager(user1,user2);
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService(){
+//        UserDetails user1 = User
+//                .withDefaultPasswordEncoder()
+//                .username("raj")
+//                .password("test123")
+//                .roles("ADMIN")
+//                .build();
+//
+//        UserDetails user2 = User
+//                .withDefaultPasswordEncoder()
+//                .username("kumar")
+//                .password("test123")
+//                .roles("USER")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(user1,user2);
+//    }
 
 
     @Bean
