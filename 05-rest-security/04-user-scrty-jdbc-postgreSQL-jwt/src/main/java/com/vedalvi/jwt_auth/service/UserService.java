@@ -14,6 +14,9 @@ public class UserService {
     private UserRepo userRepo;
 
     @Autowired
+    private JWTService jwtService;
+
+    @Autowired
     AuthenticationProvider authManager;
 
     public Users registerUser(Users user){
@@ -30,7 +33,7 @@ public class UserService {
 
 
         if (authentication.isAuthenticated())
-            return "Login Success !";
+            return jwtService.getJwtToken(user.getUsername());
 
         return "Failed TO Log In";
     }
