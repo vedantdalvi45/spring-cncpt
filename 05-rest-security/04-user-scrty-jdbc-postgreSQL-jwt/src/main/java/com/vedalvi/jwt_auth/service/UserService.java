@@ -21,8 +21,13 @@ public class UserService {
     }
 
     public String varify(Users user) {
+
+        if (userRepo.findByUsername(user.getUsername()) == null)
+            return "User Not Found !";
+
         Authentication authentication =
                 authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),user.getPassword()));
+
 
         if (authentication.isAuthenticated())
             return "Login Success !";
