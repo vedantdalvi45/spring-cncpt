@@ -1,6 +1,7 @@
 package com.vedalvi.jwt_auth.config;
 
 
+import com.vedalvi.jwt_auth.filter.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.cglib.proxy.NoOp;
@@ -22,6 +23,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.lang.runtime.ExactConversionsSupport;
 
@@ -32,6 +34,9 @@ public class SecurityConfiguration {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    private JwtFilter jwtFilter;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -41,9 +46,10 @@ public class SecurityConfiguration {
                                 .requestMatchers("/register","/login").permitAll()
                                 .anyRequest().authenticated())
 //                .formLogin(Customizer.withDefaults())
-                .httpBasic(Customizer.withDefaults())
+//                .httpBasic(Customizer.withDefaults()) //for JDBC Auth
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
@@ -59,6 +65,11 @@ public class SecurityConfiguration {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder(12);
     }
 
 }
