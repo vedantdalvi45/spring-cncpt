@@ -46,7 +46,7 @@ public class SecurityConfiguration {
                                 .requestMatchers("/register","/login").permitAll()
                                 .anyRequest().authenticated())
 //                .formLogin(Customizer.withDefaults())
-                .httpBasic(Customizer.withDefaults()) //for JDBC Auth
+//                .httpBasic(Customizer.withDefaults()) //for JDBC Auth
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
