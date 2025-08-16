@@ -2,6 +2,7 @@ package com.vedalvi.jwt_auth.controller;
 
 import com.vedalvi.jwt_auth.entity.RegisterRequest;
 import com.vedalvi.jwt_auth.entity.Users;
+import com.vedalvi.jwt_auth.exeption.InvalidPasswordException;
 import com.vedalvi.jwt_auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -30,7 +31,6 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@RequestBody Users user){
-        System.out.println(user);
         return userService.varify(user);
     }
 }
