@@ -42,8 +42,8 @@ public class SecurityConfiguration {
         return http
                 .csrf(cutomizer -> cutomizer.disable())
                 .authorizeHttpRequests(request ->
-                        request
-                                .requestMatchers("/register","/login").permitAll()
+                        request.requestMatchers("/register","/login").permitAll()
+                                .requestMatchers("/students").hasAnyRole("USER", "ADMIN", "EMPLOYEE")
                                 .anyRequest().authenticated())
 //                .formLogin(Customizer.withDefaults())
 //                .httpBasic(Customizer.withDefaults()) //for JDBC Auth
@@ -52,7 +52,6 @@ public class SecurityConfiguration {
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-
 
     @Bean
     public AuthenticationProvider authenticationProvider(){
