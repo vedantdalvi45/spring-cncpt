@@ -1,14 +1,11 @@
-package com.vedalvi.jwt_auth.exeption;
+package com.vedalvi.jwt_auth.exception;
 
 
-import com.vedalvi.jwt_auth.exeption.dao.UserResponse;
+import com.vedalvi.jwt_auth.exception.dao.UserResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.client.HttpClientErrorException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {

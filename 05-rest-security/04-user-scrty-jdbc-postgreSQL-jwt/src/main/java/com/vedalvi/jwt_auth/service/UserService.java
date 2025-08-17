@@ -1,10 +1,8 @@
 package com.vedalvi.jwt_auth.service;
 
 import com.vedalvi.jwt_auth.entity.RegisterRequest;
-import com.vedalvi.jwt_auth.entity.Role;
 import com.vedalvi.jwt_auth.entity.Users;
-import com.vedalvi.jwt_auth.exeption.InvalidPasswordException;
-import com.vedalvi.jwt_auth.exeption.UserNotFoundException;
+import com.vedalvi.jwt_auth.exception.UserNotFoundException;
 import com.vedalvi.jwt_auth.repo.RolesRepo;
 import com.vedalvi.jwt_auth.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 @Service
 public class UserService {

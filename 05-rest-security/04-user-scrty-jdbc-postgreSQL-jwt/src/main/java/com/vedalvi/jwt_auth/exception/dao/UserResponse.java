@@ -1,4 +1,4 @@
-package com.vedalvi.jwt_auth.exeption.dao;
+package com.vedalvi.jwt_auth.exception.dao;
 
 import lombok.*;
 

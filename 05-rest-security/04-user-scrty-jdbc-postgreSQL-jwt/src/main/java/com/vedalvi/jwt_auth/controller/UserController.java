@@ -2,14 +2,11 @@ package com.vedalvi.jwt_auth.controller;
 
 import com.vedalvi.jwt_auth.entity.RegisterRequest;
 import com.vedalvi.jwt_auth.entity.Users;
-import com.vedalvi.jwt_auth.exeption.InvalidPasswordException;
 import com.vedalvi.jwt_auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
