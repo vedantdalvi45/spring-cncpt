@@ -24,4 +24,19 @@ public class GlobalExceptionHandler {
                 .body(new UserResponse(HttpStatus.UNAUTHORIZED.value(), ex.getMessage()));
     }
 
+    @ExceptionHandler(CustomSignatureException.class)
+    public ResponseEntity<UserResponse> invalidPassword(CustomSignatureException ex) {
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(new UserResponse(HttpStatus.UNAUTHORIZED.value(), ex.getMessage()));
+    }
+
+    @ExceptionHandler(CustomExpiredJwtException.class)
+    public ResponseEntity<UserResponse> invalidPassword(CustomExpiredJwtException ex) {
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(new UserResponse(HttpStatus.UNAUTHORIZED.value(), ex.getMessage()));
+    }
+
+
 }

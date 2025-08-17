@@ -1,9 +1,13 @@
 package com.vedalvi.jwt_auth.service;
 
+import com.vedalvi.jwt_auth.exception.CustomExpiredJwtException;
+import com.vedalvi.jwt_auth.exception.CustomSignatureException;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.security.SignatureException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -63,12 +67,18 @@ public class JWTService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts
-                .parser()
-                .verifyWith(getKey())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
+        try {
+            return Jwts
+                    .parser()
+                    .verifyWith(getKey())
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload();
+        } catch (SignatureException e) {
+            throw new CustomSignatureException(e.getLocalizedMessage());
+        } catch (ExpiredJwtException e) {
+            throw new CustomExpiredJwtException(e.getLocalizedMessage());
+        }
     }
 
     private Date extractExpiration(String token) {

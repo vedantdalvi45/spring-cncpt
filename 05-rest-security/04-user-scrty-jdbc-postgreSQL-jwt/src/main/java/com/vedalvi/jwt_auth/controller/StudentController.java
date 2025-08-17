@@ -1,7 +1,9 @@
 package com.vedalvi.jwt_auth.controller;
 
 import com.vedalvi.jwt_auth.entity.Student;
+import com.vedalvi.jwt_auth.exception.CustomExpiredJwtException;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +20,12 @@ public class StudentController {
             new Student(4,"Raju",92.00f),
             new Student(5,"Anuradha",88.10f)
     ));
-    @GetMapping("/students")
-    public List<Student> getStudents(){
-        return studentList;
+    public ResponseEntity<List<Student>> getStudents() {
+        try {
+            return ResponseEntity.ok(studentList);
+        } catch (Exception e) {
+            throw new CustomExpiredJwtException(e.getMessage());
+        }
     }
 
     @GetMapping("csrf-token")
