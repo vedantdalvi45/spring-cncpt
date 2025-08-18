@@ -21,11 +21,9 @@ public class StudentController {
             new Student(5,"Anuradha",88.10f)
     ));
     public ResponseEntity<List<Student>> getStudents() {
-        try {
+
             return ResponseEntity.ok(studentList);
-        } catch (Exception e) {
-            throw new CustomExpiredJwtException(e.getMessage());
-        }
+
     }
 
     @GetMapping("csrf-token")
