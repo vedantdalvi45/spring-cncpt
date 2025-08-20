@@ -31,9 +31,9 @@ public class StudentController {
         return (CsrfToken) request.getAttribute("_csrf");
     }
 
-    @PostMapping("/student")
-    public Student addStudent(@RequestBody Student student){
-        studentList.add(student);
-        return student;
-    }
+//    @PostMapping("/student")
+//    public Student addStudent(@RequestBody Student student){
+//        studentList.add(student);
+//        return student;
+//    }
 }
